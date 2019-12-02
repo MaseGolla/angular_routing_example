@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StarWarsDemoServiceService} from '../star-wars-demo-service.service';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private starWarsService: StarWarsDemoServiceService) { }
 
   ngOnInit() {
+    this.starWarsService.getVehicles().subscribe(results => {
+      console.log(results);
+    });
   }
 
 }
